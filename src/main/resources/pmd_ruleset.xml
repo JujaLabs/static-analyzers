@@ -6,7 +6,7 @@
          xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
 
     <rule ref="rulesets/java/basic.xml"/>
-    <!--<rule ref="rulesets/java/braces.xml"/>-->
+    <rule ref="rulesets/java/braces.xml"/>
     <rule ref="rulesets/java/clone.xml"/>
     <rule ref="rulesets/java/codesize.xml"/>
     <!--<rule ref="rulesets/java/comments.xml" />-->
