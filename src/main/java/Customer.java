@@ -5,6 +5,8 @@ import java.util.Vector;
  * @author viktor email kuchin.victor@gmail.com
  */
 class Customer {
+    public static final int REGULAR_DAYS = 2;
+    public static final int NEW_RELEASE_DAYS = 3;
     private String _name;
     private Vector _rentals = new Vector();
 
@@ -23,27 +25,27 @@ class Customer {
             //определить сумму для каждой строки
             switch (each.getMovie().getPriceCode()) {
                 case Movie.REGULAR:
-                    thisAmount += 2;
-                    if (each.getDaysRented() > 2) {
-                        thisAmount += (each.getDaysRented() - 2) * 1.5;
+                    thisAmount += REGULAR_DAYS;
+                    if (each.getDaysRented() > REGULAR_DAYS) {
+                        thisAmount += (each.getDaysRented() - REGULAR_DAYS) * 1.5;
                     }
                     break;
                 case Movie.NEW_RELEASE:
-                    thisAmount += each.getDaysRented() * 3;
+                    thisAmount += each.getDaysRented() * NEW_RELEASE_DAYS;
                     break;
                 case Movie.CHILDRENS:
                     thisAmount += 1.5;
-                    if (each.getDaysRented() > 3) {
-                        thisAmount += (each.getDaysRented() - 3) * 1.5;
+                    if (each.getDaysRented() > NEW_RELEASE_DAYS) {
+                        thisAmount += (each.getDaysRented() - NEW_RELEASE_DAYS) * 1.5;
                     }
                     break;
             }
             // добавить очки для активного арендатора
-            frequentRenterPoints++;
+            frequentRenterPoints += 1;
             // бонус за аренду новинки на два дня
             if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE)
                 && each.getDaysRented() > 1) {
-                frequentRenterPoints++;
+                frequentRenterPoints += 1;
             }
             //показать результаты для этой аренды
             result += "\t" + each.getMovie().getTitle() + "\t" +
